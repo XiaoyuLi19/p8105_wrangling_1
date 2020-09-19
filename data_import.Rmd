@@ -96,3 +96,12 @@ litters_readr
 ```
 
 better to use read_csv.
+
+
+## exporting data
+
+export the mlb sub table
+```{r}
+write_csv(mlb_df,"./data/mlb_subtable.csv")
+```
+
