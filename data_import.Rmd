@@ -179,3 +179,41 @@ filter(litters_df, !(gd0_weight == 22))
 ```{r}
 filter(litters_df, group %in% c("Mod8", "Con"))
 ```
+
+
+## `mutate`
+
+```{r}
+mutate(
+  litters_df, 
+  wt_gain = gd18_weight - gd0_weight,
+  group = str_to_lower(group))
+
+```
+
+can mutate multiple vars at the same time
+
+
+## `arrange`
+
+ascending in default
+```{r}
+arrange(litters_df, pups_born_alive)
+```
+
+
+## pipe `%>%`
+
+hot key shift+ctrl+m
+
+```{r}
+litter_df = 
+  read_csv("./data/FAS_litters.csv") %>% 
+  janitor::clean_names() %>%
+  select(-pubs_survive_) %>% 
+  mutate(wt_gain = gd18_weight - gd0_weight) %>%
+  drop_na(gd0_weight)
+ 
+```
+
+
