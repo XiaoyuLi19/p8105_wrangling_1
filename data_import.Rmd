@@ -1,7 +1,8 @@
 ---
-title: "data import"
+title: "data import/manipulation"
 output: github_document
 ---
+# Section1: data import 
 
 ```{r setup}
 library(tidyverse)
@@ -103,5 +104,52 @@ better to use read_csv.
 export the mlb sub table
 ```{r}
 write_csv(mlb_df,"./data/mlb_subtable.csv")
+```
+
+
+# Section 2: data manipulation
+
+## `slect`
+
+choose some columns but not the others.
+
+```{r}
+select(litters_df, group, litter_number)
+```
+
+can select groups of var
+```{r}
+select(litters_df, gd0_weight:gd_of_birth)
+```
+
+get rid of a column
+```{r}
+select(litters_df, -litter_number)
+```
+
+renaming columns and select at the same time
+```{r}
+select(litters_df, GROUP = group, LITTerNumber = litter_number)
+```
+
+rename columns
+```{r}
+rename(litters_df, GROUP = group, LITTerNumber = litter_number)
+```
+
+
+select helpers. use `?select_helpers`
+
+```{r}
+select(litters_df, starts_with("gd"))
+```
+
+put litters_number as the 1st column, and keep all other columns
+```{r}
+select(litters_df, litters_number, everything())
+```
+=
+```{r}
+relocate(litters_df, litters_number)
 ```
 
