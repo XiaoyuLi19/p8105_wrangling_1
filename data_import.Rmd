@@ -12,7 +12,7 @@ library(tidyverse)
 read in the litters dataset
 
 ```{r}
-litters_df = read.csv("./data/FAS_litters.csv")
+litters_df = read_csv("./data/FAS_litters.csv")
 litters_df = janitor::clean_names(litters_df)
 ```
  "." means the current folder. This is a relative path. (absolute path not recommended).
@@ -44,3 +44,12 @@ view; (can put in console.)
 view(litters_df)
 ```
 
+
+##options to read csv
+skip the first 10 rows. do not include column names. 
+```{r}
+litters_df = read_csv("./data/FAS_litters.csv",skip = 10,col_names  = FALSE, 
+                      na = c(".", "", "NA","999"))
+```
+
+check out `?read_csv()` for more information and other options.
