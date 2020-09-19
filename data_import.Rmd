@@ -109,7 +109,7 @@ write_csv(mlb_df,"./data/mlb_subtable.csv")
 
 # Section 2: data manipulation
 
-## `slect`
+## `select`
 
 choose some columns but not the others.
 
@@ -153,3 +153,29 @@ select(litters_df, litters_number, everything())
 relocate(litters_df, litters_number)
 ```
 
+
+## `filter`
+
+operate on rows. need to give conditions to it
+
+```{r}
+filter(litters_df, gd0_weight < 22)
+```
+
+== is a test for equality (if =22 is true)
+```{r}
+filter(litters_df, gd0_weight == 22)
+```
+
+! the condition in the bracket is not true
+```{r}
+filter(litters_df, !(gd0_weight == 22))
+```
+
+```{r}
+filter(litters_df, !(gd0_weight == 22))
+```
+
+```{r}
+filter(litters_df, group %in% c("Mod8", "Con"))
+```
